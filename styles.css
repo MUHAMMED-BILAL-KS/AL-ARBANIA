@@ -26,6 +26,30 @@
     box-sizing: border-box;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-gold);
+}
+
+/* Selection */
+::selection {
+    background: var(--color-primary-gold);
+    color: var(--color-bg-main);
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 16px;
@@ -233,6 +257,17 @@ img {
     transition: all 0.3s ease;
 }
 
+/* Hamburger Animation */
+.hamburger.toggle .line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.toggle .line:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.toggle .line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 /* --- HERO SECTION --- */
 .hero {
     height: 100vh;
@@ -432,6 +467,55 @@ img {
     transform: translateY(0);
 }
 
+/* --- LIGHTBOX --- */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox.active img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: var(--color-text-light);
+    font-size: 3rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    color: var(--color-primary-gold);
+}
+
 /* --- CONTACT SECTION --- */
 .contact-grid {
     display: grid;
@@ -464,16 +548,41 @@ img {
     color: var(--color-text-muted);
 }
 
-.google-form-wrapper {
+/* --- CUSTOM FORM --- */
+.custom-form-wrapper {
     background: var(--color-bg-card);
-    padding: 1rem;
+    padding: 2.5rem;
     border-radius: 8px;
     border: 1px solid var(--color-border);
-    height: 100%;
 }
 
-.google-form-wrapper iframe {
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border);
     border-radius: 4px;
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: var(--transition-fast);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.btn-block {
+    width: 100%;
+    display: block;
 }
 
 /* --- FOOTER --- */

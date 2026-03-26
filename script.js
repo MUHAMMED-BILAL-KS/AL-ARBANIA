@@ -51,7 +51,47 @@ document.addEventListener('DOMContentLoaded', () => {
     // Run on scroll
     window.addEventListener('scroll', revealOnScroll);
 
-    // 4. Smooth Scrolling for anchor links (fallback for browsers without CSS scroll-behavior)
+    // 4. Lightbox for Gallery
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    // Create lightbox elements
+    const lightbox = document.createElement('div');
+    lightbox.classList.add('lightbox');
+    
+    const lightboxImg = document.createElement('img');
+    const lightboxClose = document.createElement('span');
+    lightboxClose.classList.add('lightbox-close');
+    lightboxClose.innerHTML = '&times;';
+    
+    lightbox.appendChild(lightboxImg);
+    lightbox.appendChild(lightboxClose);
+    document.body.appendChild(lightbox);
+    
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            if (img) {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        });
+    });
+    
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    
+    lightbox.addEventListener('click', (e) => {
+        if (e.target !== lightboxImg) {
+            closeLightbox();
+        }
+    });
+
+    // 5. Smooth Scrolling for anchor links (fallback for browsers without CSS scroll-behavior)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
