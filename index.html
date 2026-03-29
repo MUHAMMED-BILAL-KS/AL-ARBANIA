@@ -186,15 +186,24 @@
                 
                 <div class="contact-form-container scroll-reveal delay-1">
                     <div class="custom-form-wrapper">
-                        <form action="#" class="contact-form" onsubmit="alert('Thank you for reaching out! We will get back to you shortly.'); return false;">
+                        <script>
+                            var submitted = false;
+                            function showToast() {
+                                const toast = document.getElementById('success-toast');
+                                toast.classList.add('show');
+                                setTimeout(() => toast.classList.remove('show'), 3500);
+                            }
+                        </script>
+                        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showToast(); document.getElementById('gform').reset(); submitted=false; }"></iframe>
+                        <form id="gform" action="https://docs.google.com/forms/d/e/1FAIpQLSd07JCWetfm699mdyuXGjsC1YrcjrPAuZ6pbJ5wu6YqGMainw/formResponse" method="POST" target="hidden_iframe" class="contact-form" onsubmit="submitted=true;">
                             <div class="form-group">
-                                <input type="text" id="name" placeholder="Your Name" required>
+                                <input type="text" name="entry.411085188" id="name" placeholder="Your Name" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" id="email" placeholder="Your Email" required>
+                                <input type="text" name="entry.1096768157" id="contact_info" placeholder="Your Email / Phone Number">
                             </div>
                             <div class="form-group">
-                                <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                                <textarea name="entry.2093662916" id="message" rows="5" placeholder="Your Message" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Send Message</button>
                         </form>
@@ -240,6 +249,12 @@
             <p>&copy; 2024 AL ARBANIA Restaurant. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Toast Notification -->
+    <div id="success-toast" class="toast">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        Thank you! We will get back to you shortly.
+    </div>
 
     <script src="script.js"></script>
 </body>
