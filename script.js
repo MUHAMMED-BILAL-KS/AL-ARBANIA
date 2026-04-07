@@ -91,7 +91,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 5. Smooth Scrolling for anchor links (fallback for browsers without CSS scroll-behavior)
+    // 5. Custom Cursor Animation
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorOutline = document.getElementById('cursor-outline');
+    
+    if (cursorDot && cursorOutline) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            // Add a slight delay to the outline for a smooth trailing effect
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 400, fill: "forwards" });
+        });
+
+        // Add hover effect to interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .gallery-item');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovering'));
+        });
+    }
+
+    // 6. Smooth Scrolling for anchor links (fallback for browsers without CSS scroll-behavior)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -105,6 +132,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     block: 'start'
                 });
             }
+        });
+    });
+
+    // 7. Parallax Scroll Effect
+    const parallaxElements = document.querySelectorAll('.hero-bg, .parallax-img');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        
+        parallaxElements.forEach(el => {
+            const speed = 0.35;
+            el.style.transform = `translateY(${scrolled * speed}px)`;
         });
     });
 });
