@@ -1008,3 +1008,131 @@ footer {
 .toast svg {
     stroke: var(--color-bg-main);
 }
+
+/* --- PREMIUM RESTAURANT THEMES & EFFECTS --- */
+.theme-arabic {
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    position: relative;
+}
+.theme-arabic::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.03;
+    background-image: radial-gradient(var(--color-primary-gold) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.theme-chinese {
+    background: radial-gradient(circle at center, rgba(168, 28, 28, 0.07) 0%, transparent 70%);
+    position: relative;
+}
+.theme-chinese::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.02;
+    background: linear-gradient(135deg, rgba(255,0,0,0.4) 25%, transparent 25%) -50px 0,
+                linear-gradient(225deg, rgba(255,0,0,0.4) 25%, transparent 25%) -50px 0;
+    background-size: 100px 100px;
+}
+
+/* Accordion Staggered Cascade */
+.accordion-content li {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.accordion-content.active li {
+    opacity: 1;
+    transform: translateY(0);
+}
+.accordion-content.active li:nth-child(1) { transition-delay: 0.05s; }
+.accordion-content.active li:nth-child(2) { transition-delay: 0.1s; }
+.accordion-content.active li:nth-child(3) { transition-delay: 0.15s; }
+.accordion-content.active li:nth-child(4) { transition-delay: 0.2s; }
+.accordion-content.active li:nth-child(5) { transition-delay: 0.25s; }
+.accordion-content.active li:nth-child(6) { transition-delay: 0.3s; }
+.accordion-content.active li:nth-child(n+7) { transition-delay: 0.35s; }
+
+/* Chattakam Custom Cursor */
+body { cursor: none; }
+a, button, input, textarea, .category-header { cursor: none !important; }
+.chattakam-cursor {
+    position: fixed; top: 0; left: 0; width: 32px; height: 32px;
+    pointer-events: none; z-index: 9999;
+    transform-origin: top left;
+    transition: transform 0.1s ease-out;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+}
+.chattakam-cursor.hovering {
+    transform: scale(1.1) rotate(-15deg);
+}
+
+/* Steam Tap Particle */
+.steam-particle {
+    position: fixed; pointer-events: none; z-index: 9998;
+    width: 20px; height: 20px; background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    animation: steamRise 1s ease-out forwards;
+}
+
+@keyframes steamRise {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.8; }
+    50% { opacity: 0.4; }
+    100% { transform: translate(-50%, -100px) scale(3); opacity: 0; }
+}
+
+/* --- SKEWER SCROLLBAR --- */
+::-webkit-scrollbar { width: 12px; background: #050505; }
+::-webkit-scrollbar-track { 
+    background: repeating-linear-gradient(90deg, #111, #111 2px, #222 2px, #222 4px);
+    border-left: 1px solid #333;
+}
+::-webkit-scrollbar-thumb {
+    background: radial-gradient(circle at top, #ff9d00, #ff2a00 80%);
+    border-radius: 6px;
+    box-shadow: 0 0 8px #ff2a00, inset 0 0 4px #fff;
+    border: 1px solid #ff4500;
+}
+::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:active { 
+    background: radial-gradient(circle at top, #fff, #ff2a00 80%); 
+}
+
+/* --- NEON MODE (2 AM CRAVING) --- */
+body.neon-mode {
+    --color-primary-gold: #ff0055;
+    --color-bg-main: #05000a;
+    --color-bg-card: #0a001a;
+    --color-text-muted: #b05792;
+}
+body.neon-mode h1, body.neon-mode h2, body.neon-mode h3, body.neon-mode .logo-arbania {
+    text-shadow: 0 0 15px rgba(255, 0, 85, 0.8), 0 0 30px rgba(255, 0, 85, 0.4);
+}
+body.neon-mode .btn-primary {
+    box-shadow: 0 0 15px var(--color-primary-gold);
+}
+body.neon-mode .navbar {
+    border-bottom: 1px solid rgba(255,0,85, 0.3);
+    box-shadow: 0 4px 20px rgba(255,0,85,0.1);
+}
+
+/* --- DISH HOVER/ACTIVE EFFECTS --- */
+.dish-list li { transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s; cursor: pointer; }
+.dish-list li:hover { transform: scale(1.02); background: rgba(255,255,255,0.02); border-radius: 8px; padding-left: 10px; }
+.dish-list li:active { transform: scale(0.98); background: rgba(0,0,0,0.5); }
+
+/* --- POLAROID GALLERY PHYSICS --- */
+.polaroid-lightbox {
+    position: fixed; inset: 0; pointer-events: none; z-index: 10000;
+}
+.polaroid-card {
+    position: absolute; pointer-events: auto; touch-action: none; /* Crucial for touch dragging */
+    background: white; padding: 10px; padding-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
+    border-radius: 4px; border: 1px solid #ddd;
+    left: 50%; top: 50%; 
+    transition: transform 0.1s ease-out; /* Spring physics feel */
+    cursor: grab; max-width: 90vw;
+}
+.polaroid-card:active { cursor: grabbing; box-shadow: 0 10px 20px rgba(0,0,0,0.9); }
+.polaroid-card img { width: 100%; height: auto; max-height: 60vh; border: 1px solid #ccc; pointer-events: none; }
+.polaroid-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999;
+    opacity: 0; transition: opacity 0.4s; pointer-events: none;
+}
+.polaroid-overlay.active { opacity: 1; pointer-events: auto; }

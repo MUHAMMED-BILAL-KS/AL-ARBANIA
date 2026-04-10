@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,9 +15,19 @@
 </head>
 
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
+    <!-- Custom Spatula Cursor -->
+    <svg id="chattakam-cursor" class="chattakam-cursor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+        <!-- Spatula Handle -->
+        <rect x="34" y="24" width="8" height="28" rx="4" transform="rotate(-45 40 40)" fill="#111" />
+        <rect x="36" y="26" width="4" height="24" rx="2" transform="rotate(-45 40 40)" fill="#333" />
+        <!-- Metal rod -->
+        <line x1="24" y1="24" x2="38" y2="38" stroke="#ccc" stroke-width="5" stroke-linecap="round" />
+        <!-- Spatula Head -->
+        <path d="M1 12 L12 1 L30 18 L18 30 Z" fill="#e0e0e0" stroke="#888" stroke-width="1.5" stroke-linejoin="round" />
+        <!-- Slots -->
+        <line x1="6" y1="18" x2="18" y2="6" stroke="var(--color-bg-main)" stroke-width="2" stroke-linecap="round" />
+        <line x1="12" y1="24" x2="24" y2="12" stroke="var(--color-bg-main)" stroke-width="2" stroke-linecap="round" />
+    </svg>
 
     <!-- Navbar -->
     <nav class="navbar">
@@ -31,6 +41,9 @@
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li class="neon-toggle-container" style="display:flex; align-items:center;">
+                    <button id="neon-toggle" class="btn btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem; border-radius: 30px; box-shadow: 0 0 10px rgba(255,0,85,0.4);">🌙 2:00 AM Cravings</button>
+                </li>
             </ul>
             <div class="hamburger">
                 <div class="line"></div>
@@ -89,7 +102,7 @@
                 <div class="divider mx-auto"></div>
             </div>
 
-            <div class="menu-grid">
+            <div class="menu-grid theme-arabic" style="border-radius: 12px; padding: 1rem;">
                 <!-- Column 1: Mandi & Grill -->
                 <div class="menu-category scroll-reveal">
 
@@ -401,298 +414,114 @@
                 </div>
             </div>
 
-            <!-- Chinese Kitchen Section -->
-            <div class="menu-section-header scroll-reveal">
-                <h3>Chinese Kitchen</h3>
+                        <!-- Indo-Chinese Kitchen Section -->
+            <div class="menu-section-header scroll-reveal" style="margin-top: 5rem;" id="indo-chinese">
+                <h3>Indo-Chinese Kitchen</h3>
                 <div class="divider mx-auto"></div>
             </div>
 
-            <div class="menu-grid">
-                <!-- Column 1: Noodles & Soups -->
+            <div class="menu-grid theme-chinese" style="border-radius: 12px; padding: 1rem;">
+                <!-- Column 1: Rice, Noodles, Soups -->
                 <div class="menu-category scroll-reveal">
 
-                    <!-- Fried Rice / Noodles -->
-                    <div class="category-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
-                        <img src="images/noodles_dish.png" alt="Wok & Bowls" class="category-img"
-                            style="width: 70px; height: 70px;">
-                        <h3>Fried Rice / Noodles</h3>
+                    <!-- Fried Rice & Noodles -->
+                    <div class="category-header accordion-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
+                        <img src="images/noodles_dish.png" alt="Wok & Bowls" class="category-img" style="width: 70px; height: 70px;">
+                        <h3>Fried Rice & Noodles</h3>
                     </div>
+                    <p class="mb-3" style="color: var(--color-primary-gold); font-size:0.9rem; font-style:italic;">All varieties available as Fried Rice or Noodles.</p>
+                    
+                    <h4 style="margin-top: 1rem; color:var(--color-primary-gold); font-size:1.1rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.3rem;">Vegetarian</h4>
+                    <ul class="dish-list mb-4">
+                        <li><div class="dish-info"><div class="dish-header"><h4>Vegetable</h4><span class="dish-price">₹130</span></div><p>Fresh seasonal vegetables tossed lightly with aromatic soy.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Schezwan Vegetable</h4><span class="dish-price">₹150</span></div><p>Stir-fried vegetables in a bold, spicy Schezwan sauce.</p></div></li>
+                    </ul>
+
+                    <h4 style="margin-top: 1rem; color:var(--color-primary-gold); font-size:1.1rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.3rem;">Egg</h4>
+                    <ul class="dish-list mb-4">
+                        <li><div class="dish-info"><div class="dish-header"><h4>Egg</h4><span class="dish-price">₹150</span></div><p>Fluffy scrambled eggs wok-tossed with mild seasoning.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Schezwan Egg</h4><span class="dish-price">₹160</span></div><p>Eggs infused with a spicy, garlicky Schezwan kick.</p></div></li>
+                    </ul>
+
+                    <h4 style="margin-top: 1rem; color:var(--color-primary-gold); font-size:1.1rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.3rem;">Chicken</h4>
+                    <ul class="dish-list mb-4">
+                        <li><div class="dish-info"><div class="dish-header"><h4>Chicken</h4><span class="dish-price">₹180</span></div><p>Classic wok-tossed rice/noodles with tender chicken and spring onions.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Schezwan Chicken</h4><span class="dish-price">₹190</span></div><p>Chicken tossed in a fiery, tangy Schezwan sauce.</p></div></li>
+                    </ul>
+
+                    <h4 style="margin-top: 1rem; color:var(--color-primary-gold); font-size:1.1rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.3rem;">Mixed</h4>
                     <ul class="dish-list mb-5">
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Chicken</h4>
-                                    <span class="dish-price">₹150</span>
-                                </div>
-                                <p>Wok-tossed with tender chicken strips, soy sauce, and spring onions.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Egg</h4>
-                                    <span class="dish-price">₹130</span>
-                                </div>
-                                <p>Fluffy scrambled eggs tossed with fragrant rice/noodles and vegetables.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Vegetable</h4>
-                                    <span class="dish-price">₹110</span>
-                                </div>
-                                <p>A colorful mix of fresh, crunchy wok-tossed vegetables.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Mixed</h4>
-                                    <span class="dish-price">₹160</span>
-                                </div>
-                                <p>The ultimate mix of chicken, beef, egg, and fresh vegetables.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Shezwan Chicken</h4>
-                                    <span class="dish-price">₹160</span>
-                                </div>
-                                <p>Spicy, fiery Szechuan pepper tossed with chicken and veggies.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Shezwan Egg</h4>
-                                    <span class="dish-price">₹150</span>
-                                </div>
-                                <p>Eggs wok-tossed in our fiery, bold Szechuan sauce.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Shezwan Vegetable</h4>
-                                    <span class="dish-price">₹140</span>
-                                </div>
-                                <p>Hot and bold spicy wok-tossed mixed vegetables.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Shezwan Mixed</h4>
-                                    <span class="dish-price">₹170</span>
-                                </div>
-                                <p>A fiery medley of meats and veggies in authentic Szechuan style.</p>
-                            </div>
-                        </li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Mixed</h4><span class="dish-price">₹200</span></div><p>A hearty combination of meats, eggs, and vegetables.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Schezwan Mixed</h4><span class="dish-price">₹210</span></div><p>A spicy medley of mixed meats, eggs, and vegetables.</p></div></li>
                     </ul>
 
                     <!-- Soups -->
-                    <div class="category-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
-                        <img src="images/soups_dish.png" alt="Soups" class="category-img"
-                            style="width: 70px; height: 70px;">
+                    <div class="category-header accordion-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
+                        <img src="images/soups_dish.png" alt="Soups" class="category-img" style="width: 70px; height: 70px;">
                         <h3>Soups</h3>
                     </div>
-                    <ul class="dish-list mb-5">
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Veg Clear</h4>
-                                    <span class="dish-price">₹70</span>
-                                </div>
-                                <p>A light, restorative broth infused with fresh seasonal vegetables.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Veg Hot & Sour</h4>
-                                    <span class="dish-price">₹90</span>
-                                </div>
-                                <p>A tangy, spicy, and perfectly balanced thick vegetable broth.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Chicken Clear</h4>
-                                    <span class="dish-price">₹100</span>
-                                </div>
-                                <p>A comforting, delicate chicken broth with tender shreds of chicken.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Chicken Hot & Sour</h4>
-                                    <span class="dish-price">₹110</span>
-                                </div>
-                                <p>A robust, perfectly sour and spicy classic chicken soup.</p>
-                            </div>
-                        </li>
+                    <h4 style="margin-top: 1rem; color:var(--color-primary-gold); font-size:1.1rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.3rem;">Vegetarian</h4>
+                    <ul class="dish-list mb-4">
+                        <li><div class="dish-info"><div class="dish-header"><h4>Veg Clear Soup</h4><span class="dish-price">₹90</span></div><p>Light broth with fresh vegetables.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Veg Hot & Sour Soup</h4><span class="dish-price">₹110</span></div><p>Tangy, spicy, and flavorful thick soup.</p></div></li>
                     </ul>
-
+                    <h4 style="margin-top: 1rem; color:var(--color-primary-gold); font-size:1.1rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.3rem;">Chicken</h4>
+                    <ul class="dish-list mb-5">
+                        <li><div class="dish-info"><div class="dish-header"><h4>Chicken Clear Soup</h4><span class="dish-price">₹120</span></div><p>Light and nourishing chicken broth.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Chicken Hot & Sour Soup</h4><span class="dish-price">₹130</span></div><p>Bold, spicy, and comforting chicken soup.</p></div></li>
+                    </ul>
                 </div>
 
-                <!-- Column 2: Gravy -->
+                <!-- Column 2: Gravies -->
                 <div class="menu-category scroll-reveal delay-1">
-
-                    <div class="category-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
-                        <img src="images/gravy_dish.png" alt="Chicken Gravy" class="category-img"
-                            style="width: 70px; height: 70px;">
-                        <h3>Chicken Gravy</h3>
+                    
+                    <!-- Chicken Gravies -->
+                    <div class="category-header accordion-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
+                        <img src="images/gravy_dish.png" alt="Chicken Gravy" class="category-img" style="width: 70px; height: 70px;">
+                        <h3>Chicken Gravies</h3>
                     </div>
                     <ul class="dish-list mb-5">
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Chilly Chicken / Dry</h4>
-                                    <span class="dish-price">₹150</span>
-                                </div>
-                                <p>Classic Indo-Chinese fried chicken cubes tossed in spicy soy-chilli sauce.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Ginger / Garlic / Pepper</h4>
-                                    <span class="dish-price">₹160</span>
-                                </div>
-                                <p>Rich aromatic gravy dominated by freshly pounded spices.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Butter / Kadai / Manchurian</h4>
-                                    <span class="dish-price">₹180</span>
-                                </div>
-                                <p>Rich and creamy or wok-tossed in dark soy - the ultimate pairings.</p>
-                            </div>
-                        </li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Chilly Chicken (Gravy / Dry)</h4><span class="dish-price">₹190</span></div><p>Indo-Chinese classic in spicy soy-chili sauce or dry wok-tossed style.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Ginger Chicken</h4><span class="dish-price">₹200</span></div><p>Chicken cooked in a rich ginger-based savory sauce.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Garlic Chicken</h4><span class="dish-price">₹200</span></div><p>Flavorful chicken in a bold garlic and soy glaze.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Pepper Chicken</h4><span class="dish-price">₹200</span></div><p>Juicy chicken coated in a sharp black pepper sauce.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Chicken Manchurian</h4><span class="dish-price">₹210</span></div><p>Chicken in a tangy, dark soy-coriander gravy.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Butter Chicken</h4><span class="dish-price">₹220</span></div><p>Creamy tomato-based gravy with a mild sweetness.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Kadai Chicken</h4><span class="dish-price">₹220</span></div><p>Traditional spiced chicken with capsicum and onions.</p></div></li>
                     </ul>
 
-                    <div class="category-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
-                        <img src="images/gravy_dish.png" alt="Beef Gravy" class="category-img"
-                            style="width: 70px; height: 70px;">
-                        <h3>Beef Gravy</h3>
+                    <!-- Beef Specials -->
+                    <div class="category-header accordion-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
+                        <img src="images/gravy_dish.png" alt="Beef Specials" class="category-img" style="width: 70px; height: 70px;">
+                        <h3>Beef Specials</h3>
                     </div>
                     <ul class="dish-list mb-5">
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Chilly Beef / Dry</h4>
-                                    <span class="dish-price">₹150</span>
-                                </div>
-                                <p>Tender beef strips wok-tossed with bell peppers and spicy chilli sauce.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Ginger / Garlic / Pepper</h4>
-                                    <span class="dish-price">₹160</span>
-                                </div>
-                                <p>Succulent beef immersed in intense, aromatic spice gravies.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Beef Dry Fry (BDF)</h4>
-                                    <span class="dish-price">₹150</span>
-                                </div>
-                                <p>Crispy, spicy bites of perfectly fried and heavily seasoned beef.</p>
-                            </div>
-                        </li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Chilly Beef (Gravy / Dry)</h4><span class="dish-price">₹200</span></div><p>Spicy chili-soy beef, available in gravy or dry style.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Ginger Beef</h4><span class="dish-price">₹210</span></div><p>Beef stir-fried with fresh ginger in a rich sauce.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Garlic Beef</h4><span class="dish-price">₹210</span></div><p>Aromatic beef tossed in a burnt garlic soy gravy.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Pepper Beef</h4><span class="dish-price">₹210</span></div><p>Bold and spicy black pepper beef stir-fry.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Beef Dry Fry (BDF)</h4><span class="dish-price">₹210</span></div><p>Crispy fried beef with roasted spices and curry leaves.</p></div></li>
                     </ul>
 
-                    <div class="category-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
-                        <img src="images/gravy_dish.png" alt="Veg Gravy" class="category-img"
-                            style="width: 70px; height: 70px;">
-                        <h3>Veg Gravy</h3>
+                    <!-- Vegetarian Gravies -->
+                    <div class="category-header accordion-header" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
+                        <img src="images/gravy_dish.png" alt="Vegetarian Gravies" class="category-img" style="width: 70px; height: 70px;">
+                        <h3>Vegetarian Gravies</h3>
                     </div>
                     <ul class="dish-list mb-5">
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Chilly Gobi / Dry</h4>
-                                    <span class="dish-price">₹100</span>
-                                </div>
-                                <p>Crispy cauliflower florets tossed in a sweet-spicy soy garlic glaze.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Gobi Manchurian</h4>
-                                    <span class="dish-price">₹110</span>
-                                </div>
-                                <p>Indo-Chinese favorite with cauliflower in a rich, tangy dark sauce.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Paneer Chilly / Fry</h4>
-                                    <span class="dish-price">₹110</span>
-                                </div>
-                                <p>Soft paneer cubes tossed with fresh chilies, onions, and bell peppers.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Paneer Butter Masala</h4>
-                                    <span class="dish-price">₹130</span>
-                                </div>
-                                <p>Rich, creamy tomato gravy with tender chunks of cottage cheese.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Kadai Paneer</h4>
-                                    <span class="dish-price">₹130</span>
-                                </div>
-                                <p>Paneer cooked with bell peppers and whole spices in a thick masala.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dish-info">
-                                <div class="dish-header">
-                                    <h4>Tomatto Fry</h4>
-                                    <span class="dish-price">₹60</span>
-                                </div>
-                                <p>A simple, homely, and subtly spiced semi-dry tomato preparation.</p>
-                            </div>
-                        </li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Tomato Fry</h4><span class="dish-price">₹70</span></div><p>Lightly spiced traditional tomato and onion stir-fry.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Chilly Gobi (Gravy / Dry)</h4><span class="dish-price">₹140</span></div><p>Cauliflower in spicy gravy or crispy dry version.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Gobi Manchurian</h4><span class="dish-price">₹140</span></div><p>Crispy cauliflower in tangy Manchurian sauce.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Chilly Paneer (Gravy / Fry)</h4><span class="dish-price">₹160</span></div><p>Paneer in spicy gravy or wok-tossed dry style.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Paneer Butter Masala</h4><span class="dish-price">₹180</span></div><p>Creamy tomato gravy with soft paneer cubes.</p></div></li>
+                        <li><div class="dish-info"><div class="dish-header"><h4>Kadai Paneer</h4><span class="dish-price">₹180</span></div><p>Paneer cooked with capsicum in Kadai spices.</p></div></li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="menu-download mt-5 scroll-reveal delay-2">
-                <a href="#menu" onclick="alert('Digital Menu PDF will be available here soon!'); return false;"
-                    class="btn btn-outline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon" style="margin-right: 8px;">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    Download Full Menu
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Gallery Section --><!-- Gallery Section -->
     <section id="gallery" class="gallery section-padding">
         <div class="container text-center">
             <h2 class="scroll-reveal">A Feast for the Eyes</h2>
@@ -839,8 +668,9 @@
                 </a>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-top:1rem;">
             <p>&copy; 2026 AL ARBANIA Restaurant. All rights reserved.</p>
+            <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: 0;">Website designed & developed by <strong>+91 8848638439</strong></p>
         </div>
     </footer>
 
@@ -889,7 +719,7 @@
 
                 // Move siblings into wrapper
                 let sibling = header.nextElementSibling;
-                while (sibling && (sibling.tagName === 'P' || sibling.tagName === 'UL')) {
+                while (sibling && !sibling.classList.contains('category-header') && sibling.tagName !== 'SCRIPT' && !sibling.classList.contains('menu-download')) {
                     let next = sibling.nextElementSibling;
                     contentDiv.appendChild(sibling);
                     sibling = next;
