@@ -726,7 +726,8 @@
         <div class="container text-center">
             <h2 class="scroll-reveal">Get In Touch</h2>
             <div class="divider mx-auto"></div>
-            <p class="scroll-reveal delay-1">Visit us in Kaloor, Kochi, or drop us a message below.</p>
+            <p class="scroll-reveal delay-1">Have suggestions, complaints, or just want to tell us about your meal? Your
+                feedback is incredibly important to us.</p>
 
             <div class="contact-grid mt-5">
                 <div class="contact-info scroll-reveal">
@@ -779,8 +780,8 @@
                                     placeholder="Your Email / Phone Number">
                             </div>
                             <div class="form-group">
-                                <textarea name="entry.2093662916" id="message" rows="5" placeholder="Your Message"
-                                    required></textarea>
+                                <textarea name="entry.2093662916" id="message" rows="5"
+                                    placeholder="Your Feedback, Suggestion or Complaints" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Send Message</button>
                         </form>
@@ -855,11 +856,11 @@
 
     <!-- Interactive Menu Upgrades -->
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // 1. Inject Quick Jump Nav
-        const menuHeader = document.querySelector('.menu-section-header');
-        if (menuHeader) {
-            const jumpNavHTML = `
+        document.addEventListener("DOMContentLoaded", function () {
+            // 1. Inject Quick Jump Nav
+            const menuHeader = document.querySelector('.menu-section-header');
+            if (menuHeader) {
+                const jumpNavHTML = `
                 <div class="quick-jump-nav scroll-reveal">
                     <button onclick="scrollToCat('Alfahm Mandi', this)" class="jump-pill active">Alfahm Mandi</button>
                     <button onclick="scrollToCat('Shawai Mandi', this)" class="jump-pill">Shawai Mandi</button>
@@ -871,80 +872,80 @@
                     <button onclick="scrollToCat('Gravy', this)" class="jump-pill">Gravies</button>
                 </div>
             `;
-            menuHeader.insertAdjacentHTML('beforebegin', jumpNavHTML);
-        }
-        
-        // 2. Build Accordions dynamically
-        const categoryHeaders = document.querySelectorAll('.category-header');
-        const chevronSVG = `<svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
-        
-        categoryHeaders.forEach((header) => {
-            header.classList.add('accordion-header');
-            header.innerHTML += chevronSVG;
-            
-            // Create content wrapper
-            let contentDiv = document.createElement('div');
-            contentDiv.className = 'accordion-content';
-            
-            // Move siblings into wrapper
-            let sibling = header.nextElementSibling;
-            while(sibling && (sibling.tagName === 'P' || sibling.tagName === 'UL')) {
-                let next = sibling.nextElementSibling;
-                contentDiv.appendChild(sibling);
-                sibling = next;
+                menuHeader.insertAdjacentHTML('beforebegin', jumpNavHTML);
             }
-            header.parentNode.insertBefore(contentDiv, header.nextSibling);
 
-            // Toggle logic
-            header.addEventListener('click', () => {
-                const isActive = header.classList.contains('active');
-                if (!isActive) {
+            // 2. Build Accordions dynamically
+            const categoryHeaders = document.querySelectorAll('.category-header');
+            const chevronSVG = `<svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+
+            categoryHeaders.forEach((header) => {
+                header.classList.add('accordion-header');
+                header.innerHTML += chevronSVG;
+
+                // Create content wrapper
+                let contentDiv = document.createElement('div');
+                contentDiv.className = 'accordion-content';
+
+                // Move siblings into wrapper
+                let sibling = header.nextElementSibling;
+                while (sibling && (sibling.tagName === 'P' || sibling.tagName === 'UL')) {
+                    let next = sibling.nextElementSibling;
+                    contentDiv.appendChild(sibling);
+                    sibling = next;
+                }
+                header.parentNode.insertBefore(contentDiv, header.nextSibling);
+
+                // Toggle logic
+                header.addEventListener('click', () => {
+                    const isActive = header.classList.contains('active');
+                    if (!isActive) {
+                        header.classList.add('active');
+                        contentDiv.classList.add('active');
+                        contentDiv.style.maxHeight = contentDiv.scrollHeight + 100 + "px"; // Account for possible padding/images
+                    } else {
+                        header.classList.remove('active');
+                        contentDiv.classList.remove('active');
+                        contentDiv.style.maxHeight = "0px";
+                    }
+                });
+
+                // Open everything natively on Desktop, keep closed on Mobile
+                if (window.innerWidth > 768) {
                     header.classList.add('active');
                     contentDiv.classList.add('active');
-                    contentDiv.style.maxHeight = contentDiv.scrollHeight + 100 + "px"; // Account for possible padding/images
-                } else {
-                    header.classList.remove('active');
-                    contentDiv.classList.remove('active');
-                    contentDiv.style.maxHeight = "0px";
+                    contentDiv.style.maxHeight = "3000px"; // Arbitrary large height for desktop
                 }
             });
-            
-            // Open everything natively on Desktop, keep closed on Mobile
-            if (window.innerWidth > 768) {
-                header.classList.add('active');
-                contentDiv.classList.add('active');
-                contentDiv.style.maxHeight = "3000px"; // Arbitrary large height for desktop
-            }
-        });
 
-        // 3. Quick Jump Scroll Function
-        window.scrollToCat = function(name, btn) {
-            let headers = Array.from(document.querySelectorAll('.category-header h3'));
-            let target = headers.find(h => h.textContent.includes(name));
-            
-            if (target) {
-                let headerElement = target.closest('.category-header');
-                
-                // Highlight Pill
-                if (btn) {
-                    document.querySelectorAll('.jump-pill').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    // Scroll the pill nav horizontally to keep it in view
-                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            // 3. Quick Jump Scroll Function
+            window.scrollToCat = function (name, btn) {
+                let headers = Array.from(document.querySelectorAll('.category-header h3'));
+                let target = headers.find(h => h.textContent.includes(name));
+
+                if (target) {
+                    let headerElement = target.closest('.category-header');
+
+                    // Highlight Pill
+                    if (btn) {
+                        document.querySelectorAll('.jump-pill').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        // Scroll the pill nav horizontally to keep it in view
+                        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+
+                    // Open accordion if closed
+                    if (!headerElement.classList.contains('active')) {
+                        headerElement.click();
+                    }
+
+                    // Calculate scroll position factoring in the sticky header height (pill nav height ~70px)
+                    const yOffset = -80;
+                    const y = headerElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
                 }
-                
-                // Open accordion if closed
-                if (!headerElement.classList.contains('active')) {
-                    headerElement.click();
-                }
-                
-                // Calculate scroll position factoring in the sticky header height (pill nav height ~70px)
-                const yOffset = -80; 
-                const y = headerElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                window.scrollTo({top: y, behavior: 'smooth'});
-            }
-        };
-    });
+            };
+        });
     </script>
     <script src="script.js"></script>
 </body>

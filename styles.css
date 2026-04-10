@@ -968,8 +968,11 @@ footer {
     .about-text h2 { font-size: 2rem; }
     .parallax-img-container { height: 400px; }
     
+    /* Interactive Mobile Rescaling */
+    .jump-pill { padding: 0.4rem 1rem; font-size: 0.85rem; }
+
     /* Contact Specific */
-    .contact-grid { gap: 2rem; }
+    .contact-info { gap: 1.5rem !important; }
     .info-item { padding: 1.5rem; text-align: center; }
     .info-item .gold-icon { margin: 0 auto 1rem auto; display: block; }
     .full-width-map iframe { height: 250px; }
