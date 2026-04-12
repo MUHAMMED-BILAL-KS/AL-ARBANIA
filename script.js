@@ -235,4 +235,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // 9. Download Menus
+    const downloadMenuBtn = document.getElementById('download-menu-btn');
+    if (downloadMenuBtn) {
+        downloadMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const menusToDownload = [
+                'assets/menu/Arabic.jpg',
+                'assets/menu/Indo-chinease.jpg'
+            ];
+            
+            menusToDownload.forEach((menuUrl, index) => {
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = menuUrl;
+                    link.download = menuUrl.split('/').pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }, index * 300); // 300ms delay to ensure both downloads trigger properly
+            });
+        });
+    }
 });
