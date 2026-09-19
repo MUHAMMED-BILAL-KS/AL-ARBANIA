@@ -278,6 +278,22 @@ img {
     width: 100%;
 }
 
+.nav-links a.nav-order-link {
+    color: var(--color-primary-gold);
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    border-radius: 4px;
+    padding: 0.35rem 0.65rem;
+}
+
+.nav-links a.nav-order-link::after {
+    display: none;
+}
+
+.nav-links a.nav-order-link:hover {
+    background-color: var(--color-primary-gold);
+    color: var(--color-bg-main);
+}
+
 .hamburger {
     display: none;
     cursor: pointer;
@@ -439,6 +455,18 @@ img {
 }
 
 /* --- MENU SECTION --- */
+.menu-cta-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.menu-cta-wrap .btn {
+    border-radius: 30px;
+    font-weight: 600;
+}
+
 .menu h2 {
     font-size: 3.2rem;
 }
