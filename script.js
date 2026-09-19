@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Toggle Nav
         navLinks.classList.toggle('active');
 
-        // Burger Animation (optional)
+        // Animate the hamburger icon between closed and open states
         hamburger.classList.toggle('toggle');
     });
 
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dish.addEventListener('touchstart', triggerDishSteam, {passive: true});
     });
 
-    // 6. Smooth Scrolling for anchor links (fallback for browsers without CSS scroll-behavior)
+    // 6. Smooth scrolling enhancement for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 9. Download Menu (Arabic Only)
+    // 9. Download the Arabic menu image
     const downloadMenuBtn = document.getElementById('download-menu-btn');
     if (downloadMenuBtn) {
         downloadMenuBtn.addEventListener('click', (e) => {
